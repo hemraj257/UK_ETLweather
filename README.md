@@ -1,50 +1,38 @@
-<<<<<<< HEAD
-Overview
-========
+# UK_ETLweather 🇬🇧⛅
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+# UK_ETLweather 🇬🇧⛅
 
-Project Contents
-================
+An Apache Airflow + Astro CLI project to extract, transform, and load UK weather data from a public API.
 
-Your Astro project contains the following files and folders:
+## Features
 
-- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes one example DAG:
-    - `example_astronauts`: This DAG shows a simple ETL pipeline example that queries the list of astronauts currently in space from the Open Notify API and prints a statement for each astronaut. The DAG uses the TaskFlow API to define tasks in Python, and dynamic task mapping to dynamically print a statement for each astronaut. For more on how this DAG works, see our [Getting started tutorial](https://www.astronomer.io/docs/learn/get-started-with-airflow).
-- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
-- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
-- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
-- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
-- plugins: Add custom or community plugins for your project to this file. It is empty by default.
-- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
+- 🌐 Pulls weather data from an API
+- 🔁 ETL process scheduled using Airflow
+- 🐍 Written in Python 3.11
+- 🛰️ Runs inside an Astro project
 
-Deploy Your Project Locally
-===========================
+## ⚙️ Technologies Used
 
-Start Airflow on your local machine by running 'astro dev start'.
+- Python 3.11
+- Apache Airflow
+- Astro CLI
+- Public Weather API (e.g. `api.met.no`)
+- Pandas
 
-This command will spin up five Docker containers on your machine, each for a different Airflow component:
+## Project Structure
 
-- Postgres: Airflow's Metadata Database
-- Scheduler: The Airflow component responsible for monitoring and triggering tasks
-- DAG Processor: The Airflow component responsible for parsing DAGs
-- API Server: The Airflow component responsible for serving the Airflow UI and API
-- Triggerer: The Airflow component responsible for triggering deferred tasks
+UK_ETLweather/
 
-When all five containers are ready the command will open the browser to the Airflow UI at http://localhost:8080/. You should also be able to access your Postgres Database at 'localhost:5432/postgres' with username 'postgres' and password 'postgres'.
-
-Note: If you already have either of the above ports allocated, you can either [stop your existing Docker containers or change the port](https://www.astronomer.io/docs/astro/cli/troubleshoot-locally#ports-are-not-available-for-my-local-airflow-webserver).
-
-Deploy Your Project to Astronomer
-=================================
-
-If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://www.astronomer.io/docs/astro/deploy-code/
-
-Contact
-=======
-
-The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
-=======
-# UK_ETLweather
-UK Weather ETL using Apache Airflow and Astro
->>>>>>> 0d7e52f2afdc336df9882f70cfea8ef79bfb2c02
+│
+├── dags/
+│   └── eltweather.py          # Your main DAG
+│
+├── data/                      # Optional: For storing intermediate or final CSVs
+│   └── weather_data.csv
+│
+├── plugins/                  # Optional: For custom operators or hooks
+│
+├── Dockerfile                # For Astro or custom deployment (if used)
+├── requirements.txt          # Python dependencies
+├── README.md                 # Project description
+└── airflow.cfg               # If using local Airflow (optional)
